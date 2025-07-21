@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Happy Birthday! 🎉</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="stars"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Birthday Message -->
+        <section class="birthday-section">
+            <h1 class="birthday-title">
+                <span class="birthday-text">Happy Birthday!</span>
+            </h1>
+            <p class="birthday-subtitle">Make a wish and let the magic begin...</p>
+        </section>
+
+        <!-- Magic 8-Ball Section -->
+        <section class="magic-section">
+            <div class="magic-8-ball" id="magic8Ball" tabindex="0" role="button" aria-label="Click to reveal your fortune">
+                <div class="ball-surface">
+                    <div class="ball-window">
+                        <div class="ball-text" id="ballText">?</div>
+                    </div>
+                </div>
+                <div class="ball-shadow"></div>
+            </div>
+            <p class="magic-instruction">Click the Magic 8-Ball to reveal your fortune!</p>
+        </section>
+
+        <!-- Gift Reveal Button -->
+        <section class="gift-section">
+            <button class="gift-button" id="giftButton" style="display: none;">
+                <span class="gift-icon">🎁</span>
+                <span class="gift-text">Now for your gift!</span>
+                <div class="button-glow"></div>
+            </button>
+        </section>
+    </div>
+
+    <!-- Travel Gift Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">×</button>
+            
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="travel-icon">✈️</div>
+                    <h2 class="modal-title">Surprise Travel Gift!</h2>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="destination-card">
+                        <div class="destination-mystery">
+                            <div class="mystery-box">
+                                <div class="mystery-text">Your Secret Destination</div>
+                                <div class="reveal-button" id="revealButton">
+                                    <span>Reveal Mystery</span>
+                                    <div class="sparkles">✨</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="destination-reveal" id="destinationReveal" style="display: none;">
+                            <div class="destination-banner">
+                                <div class="location-pin">📍</div>
+                                <h3 class="destination-name">Secret Destination</h3>
+                                <p class="destination-subtitle">A magical place awaits you...</p>
+                            </div>
+                            
+                            <div class="travel-details">
+                                <div class="detail-item">
+                                    <span class="detail-icon">🗓️</span>
+                                    <span class="detail-text">March 15-22, 2025 (7 Days)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">✈️</span>
+                                    <span class="detail-text">Round-trip flights included</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">🏨</span>
+                                    <span class="detail-text">Luxury accommodation</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">🎭</span>
+                                    <span class="detail-text">Exclusive experiences & tours</span>
+                                </div>
+                            </div>
+                            
+                            <div class="birthday-message-final">
+                                <p>🎉 Happy Birthday! 🎉</p>
+                                <p>Pack your bags - adventure awaits!</p>
+                                <p class="travel-hint">The destination will be revealed soon... 🌟</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
