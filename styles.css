@@ -83,7 +83,7 @@ body {
 
 .birthday-text {
     font-family: 'Dancing Script', cursive;
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
     background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
     background-size: 300% 300%;
@@ -91,7 +91,7 @@ body {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradientShift 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 @keyframes gradientShift {
@@ -616,7 +616,7 @@ body {
     }
 
     .birthday-text {
-        font-size: clamp(2.5rem, 10vw, 4rem);
+        font-size: clamp(1.8rem, 6vw, 2.8rem);
     }
 
     .birthday-subtitle {
@@ -665,7 +665,7 @@ body {
 
 @media (max-width: 480px) {
     .birthday-text {
-        font-size: clamp(2rem, 12vw, 3rem);
+        font-size: clamp(1.5rem, 8vw, 2.2rem);
     }
 
     .magic-8-ball {
