@@ -13,7 +13,7 @@ let fortuneRevealed = false;
 let isShaking = false;
 
 // Fortune messages for the magic 8-ball
-const fortuneMessage = "Cбудется сто проц!!!";
+const fortuneMessage = "Сбудется сто процентов!!!";
 
 // Initialize the app
 function init() {
@@ -109,7 +109,7 @@ function revealFortune() {
         
         // Update instruction text
         const instruction = document.querySelector('.magic-instruction');
-        instruction.textContent = 'Your fortune has been revealed! ✨';
+        instruction.textContent = 'Твоя судьба раскрыта! ✨';
         instruction.style.color = 'rgba(255, 215, 0, 0.8)';
     }, 300);
 }
