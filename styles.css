@@ -394,6 +394,7 @@ body {
     visibility: hidden;
     transition: all 0.3s ease;
     padding: 1rem;
+    box-sizing: border-box;
 }
 
 .modal-overlay.active {
@@ -416,6 +417,9 @@ body {
     position: relative;
     transform: scale(0.8) translateY(20px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-overlay.active .modal {
@@ -448,11 +452,16 @@ body {
 
 .modal-content {
     padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .modal-header {
     text-align: center;
     margin-bottom: 2rem;
+    flex-shrink: 0;
 }
 
 .travel-icon {
@@ -476,11 +485,18 @@ body {
     border-radius: 15px;
     padding: 2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .mystery-box {
     text-align: center;
-    padding: 2rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
 }
 
 .mystery-text {
@@ -523,6 +539,7 @@ body {
 .destination-reveal {
     text-align: center;
     animation: fadeInScale 0.8s ease-out;
+    width: 100%;
 }
 
 .destination-banner {
@@ -704,6 +721,16 @@ body {
     .modal-content {
         padding: 1.5rem;
     }
+    
+    .modal {
+        max-height: 85vh;
+        margin: 1rem;
+    }
+    
+    .mystery-box {
+        padding: 1rem;
+        min-height: 150px;
+    }
 
     .modal-title {
         font-size: 1.8rem;
@@ -798,7 +825,11 @@ body {
     .modal {
         margin: 0.5rem;
         max-height: 90vh;
-        max-height: 90dvh;
+    }
+    
+    .mystery-box {
+        padding: 1rem;
+        min-height: 120px;
     }
 
     .modal-title {
