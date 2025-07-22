@@ -616,30 +616,48 @@ body {
     }
 
     .birthday-text {
-        font-size: clamp(1.8rem, 6vw, 2.8rem);
+        font-size: clamp(1.5rem, 5vw, 2.2rem);
     }
 
     .birthday-subtitle {
-        font-size: 1rem;
+        font-size: 0.9rem;
+        padding: 0 1rem;
     }
 
     .magic-8-ball {
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
+        margin-bottom: 2rem;
     }
 
     .ball-window {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
     }
 
     .ball-text {
-        font-size: 1rem;
+        font-size: 0.8rem;
+        padding: 0.3rem;
+        line-height: 1.1;
+    }
+
+    .magic-instruction {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+        text-align: center;
     }
 
     .gift-button {
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+        min-height: 60px;
+        touch-action: manipulation;
+    }
+
+    .gift-icon {
+        font-size: 1.5rem;
+    }
     }
 
     .modal-content {
@@ -660,26 +678,64 @@ body {
 
     .detail-item {
         padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .modal {
+        margin: 1rem;
+        max-height: 85vh;
+    }
+
+    .birthday-section {
+        margin-bottom: 2rem;
+    }
+
+    .magic-section {
+        margin-bottom: 2rem;
     }
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0.5rem;
+    }
+
     .birthday-text {
-        font-size: clamp(1.5rem, 8vw, 2.2rem);
+        font-size: clamp(1.3rem, 6vw, 1.8rem);
+    }
+
+    .birthday-subtitle {
+        font-size: 0.8rem;
+        padding: 0 0.5rem;
     }
 
     .magic-8-ball {
-        width: 120px;
-        height: 120px;
+        width: 160px;
+        height: 160px;
+        margin-bottom: 1.5rem;
     }
 
     .ball-window {
-        width: 50px;
-        height: 50px;
+        width: 65px;
+        height: 65px;
     }
 
     .ball-text {
+        font-size: 0.7rem;
+        padding: 0.2rem;
+    }
+
+    .magic-instruction {
         font-size: 0.8rem;
+        padding: 0 0.5rem;
+    }
+
+    .gift-button {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+        min-height: 55px;
+        width: 90%;
+        max-width: 300px;
     }
 
     .modal-content {
@@ -688,6 +744,50 @@ body {
 
     .destination-card {
         padding: 1.5rem;
+    }
+
+    .modal {
+        margin: 0.5rem;
+        max-height: 90vh;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .destination-name {
+        font-size: 1.8rem;
+    }
+
+    .detail-item {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+    }
+
+    .detail-icon {
+        font-size: 1.3rem;
+        min-width: 25px;
+    }
+
+    .birthday-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .magic-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .travel-icon {
+        font-size: 2.5rem;
+    }
+
+    .mystery-text {
+        font-size: 1.2rem;
+    }
+
+    .reveal-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
     }
 }
 

@@ -299,6 +299,7 @@ function addDynamicStyles() {
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     addDynamicStyles();
+    optimizeForMobile();
     init();
 });
 
@@ -315,20 +316,90 @@ document.addEventListener('visibilitychange', () => {
 
 // Touch event handling for mobile
 let touchStartTime = 0;
+let touchStartY = 0;
 
 magic8Ball.addEventListener('touchstart', (e) => {
     touchStartTime = Date.now();
+    touchStartY = e.touches[0].clientY;
     e.preventDefault();
 });
 
 magic8Ball.addEventListener('touchend', (e) => {
     const touchDuration = Date.now() - touchStartTime;
-    if (touchDuration < 500 && !isShaking && !fortuneRevealed) {
+    const touchEndY = e.changedTouches[0].clientY;
+    const touchDistance = Math.abs(touchEndY - touchStartY);
+    
+    // Only trigger if it's a tap (not a scroll) and within time limit
+    if (touchDuration < 500 && touchDistance < 10 && !isShaking && !fortuneRevealed) {
         handleMagic8BallClick();
     }
     e.preventDefault();
 });
 
+// Prevent zoom on double tap for mobile
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function (event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+// Add mobile-specific optimizations
+function optimizeForMobile() {
+    // Disable text selection on mobile
+    document.body.style.webkitUserSelect = 'none';
+    document.body.style.userSelect = 'none';
+    
+    // Improve touch responsiveness
+    document.body.style.webkitTouchCallout = 'none';
+    document.body.style.webkitTapHighlightColor = 'transparent';
+    
+    // Add viewport meta tag if not present
+    if (!document.querySelector('meta[name="viewport"]')) {
+        const viewport = document.createElement('meta');
+        viewport.name = 'viewport';
+        viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+        document.head.appendChild(viewport);
+    }
+}
+
+// Detect mobile device
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Enhanced mobile modal handling
+function openModal() {
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // On mobile, prevent background scrolling
+    if (isMobileDevice()) {
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+    }
+    
+    // Focus management for accessibility
+    setTimeout(() => {
+        modalClose.focus();
+    }, 300);
+}
+
+function closeModal() {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    
+    // Restore mobile scrolling
+    if (isMobileDevice()) {
+        document.body.style.position = '';
+        document.body.style.width = '';
+    }
+    
+    // Return focus to gift button
+    giftButton.focus();
+}
 // Preload assets and optimize performance
 function preloadAssets() {
     // Preload any fonts or images if needed
