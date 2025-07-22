@@ -99,6 +99,22 @@ body {
     -webkit-text-fill-color: transparent;
     animation: gradientShift 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.birthday-text-second {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    display: block;
 }
 
 @keyframes gradientShift {
