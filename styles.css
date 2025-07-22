@@ -745,7 +745,12 @@ body {
     }
 
     .birthday-text {
-        font-size: clamp(1.3rem, 6vw, 1.8rem);
+        font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+        margin-bottom: 0.2rem;
+    }
+
+    .birthday-text-second {
+        font-size: clamp(0.9rem, 4vw, 1.2rem);
     }
 
     .birthday-subtitle {
