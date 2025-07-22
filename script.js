@@ -13,7 +13,7 @@ let fortuneRevealed = false;
 let isShaking = false;
 
 // Fortune messages for the magic 8-ball
-const fortuneMessage = "Your wish will definitely come true!";
+const fortuneMessage = "Cбудется сто проц!!!";
 
 // Initialize the app
 function init() {
