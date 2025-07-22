@@ -317,23 +317,30 @@ document.addEventListener('visibilitychange', () => {
 // Touch event handling for mobile
 let touchStartTime = 0;
 let touchStartY = 0;
+let touchStartX = 0;
 
 magic8Ball.addEventListener('touchstart', (e) => {
     touchStartTime = Date.now();
     touchStartY = e.touches[0].clientY;
+    touchStartX = e.touches[0].clientX;
     e.preventDefault();
+    e.stopPropagation();
 });
 
 magic8Ball.addEventListener('touchend', (e) => {
     const touchDuration = Date.now() - touchStartTime;
     const touchEndY = e.changedTouches[0].clientY;
-    const touchDistance = Math.abs(touchEndY - touchStartY);
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchDistanceY = Math.abs(touchEndY - touchStartY);
+    const touchDistanceX = Math.abs(touchEndX - touchStartX);
+    const totalTouchDistance = Math.sqrt(touchDistanceX * touchDistanceX + touchDistanceY * touchDistanceY);
     
     // Only trigger if it's a tap (not a scroll) and within time limit
-    if (touchDuration < 500 && touchDistance < 10 && !isShaking && !fortuneRevealed) {
+    if (touchDuration < 500 && totalTouchDistance < 15 && !isShaking && !fortuneRevealed) {
         handleMagic8BallClick();
     }
     e.preventDefault();
+    e.stopPropagation();
 });
 
 // Prevent zoom on double tap for mobile
@@ -348,20 +355,31 @@ document.addEventListener('touchend', function (event) {
 
 // Add mobile-specific optimizations
 function optimizeForMobile() {
-    // Disable text selection on mobile
-    document.body.style.webkitUserSelect = 'none';
-    document.body.style.userSelect = 'none';
+    // Force hardware acceleration
+    document.body.style.transform = 'translateZ(0)';
+    document.body.style.webkitTransform = 'translateZ(0)';
     
-    // Improve touch responsiveness
-    document.body.style.webkitTouchCallout = 'none';
-    document.body.style.webkitTapHighlightColor = 'transparent';
+    // Improve scrolling performance
+    document.body.style.webkitOverflowScrolling = 'touch';
     
-    // Add viewport meta tag if not present
-    if (!document.querySelector('meta[name="viewport"]')) {
-        const viewport = document.createElement('meta');
-        viewport.name = 'viewport';
-        viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
-        document.head.appendChild(viewport);
+    // Add touch event listeners for better mobile interaction
+    document.addEventListener('touchmove', function(e) {
+        // Allow scrolling but prevent other touch behaviors
+        if (e.target.closest('.magic-8-ball') || e.target.closest('.gift-button')) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    // Improve button touch handling
+    const giftBtn = document.getElementById('giftButton');
+    if (giftBtn) {
+        giftBtn.addEventListener('touchstart', function(e) {
+            this.style.transform = 'translateY(-2px) scale(1.05)';
+        });
+        
+        giftBtn.addEventListener('touchend', function(e) {
+            this.style.transform = '';
+        });
     }
 }
 

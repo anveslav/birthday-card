@@ -11,6 +11,13 @@ body {
     color: #ffffff;
     overflow-x: hidden;
     min-height: 100vh;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 /* Animated Background */
@@ -128,6 +135,13 @@ body {
     outline: none;
     background: transparent;
     border: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .magic-8-ball:hover {
@@ -252,6 +266,13 @@ body {
         pulseGlow 3s ease-in-out infinite;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     letter-spacing: 0.5px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .gift-button:hover {
@@ -612,7 +633,9 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
-        padding: 1rem;
+        padding: 1rem 0.5rem;
+        min-height: 100vh;
+        min-height: 100dvh; /* Dynamic viewport height for mobile */
     }
 
     .birthday-text {
@@ -625,18 +648,19 @@ body {
     }
 
     .magic-8-ball {
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
         margin-bottom: 2rem;
+        touch-action: manipulation;
     }
 
     .ball-window {
-        width: 70px;
-        height: 70px;
+        width: 65px;
+        height: 65px;
     }
 
     .ball-text {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         padding: 0.3rem;
         line-height: 1.1;
     }
@@ -648,11 +672,13 @@ body {
     }
 
     .gift-button {
-        padding: 1rem 2.5rem;
-        font-size: 1.1rem;
+        padding: 1.2rem 2rem;
+        font-size: 1rem;
         margin-top: 1rem;
-        min-height: 60px;
+        min-height: 64px;
         touch-action: manipulation;
+        width: auto;
+        max-width: 90vw;
     }
 
     .gift-icon {
@@ -681,8 +707,9 @@ body {
     }
 
     .modal {
-        margin: 1rem;
+        margin: 0.5rem;
         max-height: 85vh;
+        max-height: 85dvh;
     }
 
     .birthday-section {
@@ -696,7 +723,9 @@ body {
 
 @media (max-width: 480px) {
     .container {
-        padding: 0.5rem;
+        padding: 1rem 0.5rem;
+        min-height: 100vh;
+        min-height: 100dvh;
     }
 
     .birthday-text {
@@ -709,18 +738,18 @@ body {
     }
 
     .magic-8-ball {
-        width: 160px;
-        height: 160px;
+        width: 140px;
+        height: 140px;
         margin-bottom: 1.5rem;
     }
 
     .ball-window {
-        width: 65px;
-        height: 65px;
+        width: 55px;
+        height: 55px;
     }
 
     .ball-text {
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         padding: 0.2rem;
     }
 
@@ -730,11 +759,11 @@ body {
     }
 
     .gift-button {
-        padding: 0.9rem 2rem;
+        padding: 1rem 1.5rem;
         font-size: 1rem;
-        min-height: 55px;
-        width: 90%;
-        max-width: 300px;
+        min-height: 60px;
+        width: 85vw;
+        max-width: 280px;
     }
 
     .modal-content {
@@ -748,6 +777,7 @@ body {
     .modal {
         margin: 0.5rem;
         max-height: 90vh;
+        max-height: 90dvh;
     }
 
     .modal-title {
