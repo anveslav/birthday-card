@@ -90,7 +90,7 @@ body {
 
 .birthday-text {
     font-family: 'Dancing Script', cursive;
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(4rem, 12vw, 7rem);
     font-weight: 700;
     background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
     background-size: 300% 300%;
