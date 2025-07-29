@@ -109,7 +109,7 @@ function revealFortune() {
         
         // Update instruction text
         const instruction = document.querySelector('.magic-instruction');
-        instruction.textContent = 'Твоя судьба раскрыта! ✨';
+        instruction.textContent = 'Я отправил запрос во Вселенную! ✨';
         instruction.style.color = 'rgba(255, 215, 0, 0.8)';
     }, 300);
 }
