@@ -13,7 +13,7 @@ let fortuneRevealed = false;
 let isShaking = false;
 
 // Fortune messages for the magic 8-ball
-const fortuneMessage = "Сбудется сто проц";
+const fortuneMessage = "Cбудется сто проц!!!";
 
 // Initialize the app
 function init() {
@@ -24,44 +24,46 @@ function init() {
 // Event Listeners
 function setupEventListeners() {
     // Magic 8-Ball interactions
-    magic8Ball.addEventListener('click', handleMagic8BallClick);
-    magic8Ball.addEventListener('keydown', handleMagic8BallKeydown);
+    if (magic8Ball) {
+        magic8Ball.addEventListener('click', handleMagic8BallClick);
+        
+        // Add hover effects
+        magic8Ball.addEventListener('mouseenter', () => {
+            if (!isShaking) {
+                magic8Ball.style.transform = 'scale(1.05) translateY(-5px)';
+            }
+        });
+
+        magic8Ball.addEventListener('mouseleave', () => {
+            if (!isShaking) {
+                magic8Ball.style.transform = 'scale(1) translateY(0)';
+            }
+        });
+    }
 
     // Gift button
-    giftButton.addEventListener('click', openModal);
+    if (giftButton) {
+        giftButton.addEventListener('click', openModal);
+    }
 
     // Modal interactions
-    modalClose.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', handleModalOverlayClick);
-    document.addEventListener('keydown', handleEscapeKey);
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+    
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', handleModalOverlayClick);
+    }
 
     // Reveal button
-    revealButton.addEventListener('click', revealDestination);
-
-    // Add hover sound effects (visual feedback)
-    magic8Ball.addEventListener('mouseenter', () => {
-        if (!isShaking) {
-            magic8Ball.style.transform = 'scale(1.05) translateY(-5px)';
-        }
-    });
-
-    magic8Ball.addEventListener('mouseleave', () => {
-        if (!isShaking) {
-            magic8Ball.style.transform = 'scale(1) translateY(0)';
-        }
-    });
+    if (revealButton) {
+        revealButton.addEventListener('click', revealDestination);
+    }
 }
 
 // Magic 8-Ball functionality
 function handleMagic8BallClick() {
     if (!isShaking && !fortuneRevealed) {
-        shakeBall();
-    }
-}
-
-function handleMagic8BallKeydown(e) {
-    if ((e.key === 'Enter' || e.key === ' ') && !isShaking && !fortuneRevealed) {
-        e.preventDefault();
         shakeBall();
     }
 }
@@ -74,8 +76,10 @@ function shakeBall() {
     magic8Ball.style.animation = 'shake 0.5s ease-in-out';
     
     // Change text to indicate loading
-    ballText.textContent = '...';
-    ballText.style.opacity = '0.5';
+    if (ballText) {
+        ballText.textContent = '...';
+        ballText.style.opacity = '0.5';
+    }
 
     setTimeout(() => {
         // Remove shake animation
@@ -96,53 +100,55 @@ function shakeBall() {
 }
 
 function revealFortune() {
-    ballText.style.opacity = '0';
-    
-    setTimeout(() => {
-        ballText.textContent = fortuneMessage;
-        ballText.style.fontSize = '0.7rem';
-        ballText.style.opacity = '1';
-        ballText.style.animation = 'pulse 1s ease-in-out';
+    if (ballText) {
+        ballText.style.opacity = '0';
         
-        // Add glow effect to the ball
-        magic8Ball.style.boxShadow = '0 0 30px rgba(255, 215, 0, 0.6)';
-        
-        // Update instruction text
-        const instruction = document.querySelector('.magic-instruction');
-        instruction.textContent = 'Я отправил запрос во Вселенную! ✨';
-        instruction.style.color = 'rgba(255, 215, 0, 0.8)';
-    }, 300);
+        setTimeout(() => {
+            ballText.textContent = fortuneMessage;
+            ballText.style.fontSize = '0.7rem';
+            ballText.style.opacity = '1';
+            ballText.style.animation = 'pulse 1s ease-in-out';
+            
+            // Add glow effect to the ball
+            magic8Ball.style.boxShadow = '0 0 30px rgba(255, 215, 0, 0.6)';
+            
+            // Update instruction text
+            const instruction = document.querySelector('.magic-instruction');
+            if (instruction) {
+                instruction.textContent = 'Я отправил запрос во Вселенную! ✨';
+                instruction.style.color = 'rgba(255, 215, 0, 0.8)';
+            }
+        }, 300);
+    }
 }
 
 function showGiftButton() {
-    giftButton.style.display = 'block';
-    giftButton.style.opacity = '0';
-    giftButton.style.transform = 'translateY(20px) scale(0.8)';
-    
-    setTimeout(() => {
-        giftButton.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-        giftButton.style.opacity = '1';
-        giftButton.style.transform = 'translateY(0) scale(1)';
-    }, 100);
+    if (giftButton) {
+        giftButton.style.display = 'block';
+        giftButton.style.opacity = '0';
+        giftButton.style.transform = 'translateY(20px) scale(0.8)';
+        
+        setTimeout(() => {
+            giftButton.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            giftButton.style.opacity = '1';
+            giftButton.style.transform = 'translateY(0) scale(1)';
+        }, 100);
+    }
 }
 
 // Modal functionality
 function openModal() {
-    modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    // Focus management for accessibility
-    setTimeout(() => {
-        modalClose.focus();
-    }, 300);
+    if (modalOverlay) {
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function closeModal() {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
-    
-    // Return focus to gift button
-    giftButton.focus();
+    if (modalOverlay) {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
 }
 
 function handleModalOverlayClick(e) {
@@ -151,32 +157,39 @@ function handleModalOverlayClick(e) {
     }
 }
 
-function handleEscapeKey(e) {
-    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-        closeModal();
-    }
-}
-
 // Destination reveal functionality
 function revealDestination() {
     const mysteryBox = document.querySelector('.mystery-box');
     
-    mysteryBox.style.opacity = '0';
-    mysteryBox.style.transform = 'scale(0.8)';
-    
-    setTimeout(() => {
-        mysteryBox.style.display = 'none';
-        destinationReveal.style.display = 'block';
+    if (mysteryBox) {
+        mysteryBox.style.opacity = '0';
+        mysteryBox.style.transform = 'scale(0.8)';
         
-        // Trigger confetti effect
-        createConfettiEffect();
-        
-    }, 300);
+        setTimeout(() => {
+            mysteryBox.style.display = 'none';
+            if (destinationReveal) {
+                destinationReveal.style.display = 'block';
+                destinationReveal.style.opacity = '0';
+                
+                // Плавно показываем блок с назначением
+                setTimeout(() => {
+                    destinationReveal.style.transition = 'opacity 0.5s ease-in-out';
+                    destinationReveal.style.opacity = '1';
+                }, 50);
+            }
+            
+            // Trigger confetti effect
+            createConfettiEffect();
+            
+        }, 300);
+    }
 }
 
 // Create floating particles effect
 function createFloatingParticles() {
     const particlesContainer = document.querySelector('.floating-particles');
+    if (!particlesContainer) return;
+    
     const particleCount = 20;
     
     for (let i = 0; i < particleCount; i++) {
@@ -248,7 +261,9 @@ function createConfettiEffect() {
     
     // Clean up confetti after animation
     setTimeout(() => {
-        document.body.removeChild(confettiContainer);
+        if (document.body.contains(confettiContainer)) {
+            document.body.removeChild(confettiContainer);
+        }
     }, 4000);
 }
 
@@ -256,6 +271,65 @@ function createConfettiEffect() {
 function addDynamicStyles() {
     const style = document.createElement('style');
     style.textContent = `
+        /* МАКСИМАЛЬНОЕ отключение всех рамок */
+        *, *::before, *::after {
+            outline: none !important;
+            outline-width: 0 !important;
+            outline-style: none !important;
+            outline-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+        }
+        
+        *:focus, *:focus-within, *:focus-visible, *:active, *:hover, *:visited, *:target {
+            outline: none !important;
+            outline-width: 0 !important;
+            outline-style: none !important;
+            outline-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            -webkit-focus-ring-color: transparent !important;
+        }
+        
+        /* Убираем ВСЕ возможные рамки для шара */
+        #magic8Ball, .magic-8-ball, .magic-8-ball *, .ball-surface, .ball-window {
+            outline: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-focus-ring-color: transparent !important;
+            -moz-outline: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+        }
+        
+        /* Отключаем tabindex и фокус */
+        [tabindex] {
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        /* Убираем желтую рамку в Chrome/Safari */
+        input, button, select, textarea, div, span, a {
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-user-select: none !important;
+            -webkit-focus-ring-color: transparent !important;
+        }
+        
+        /* Отключаем выделение текста */
+        * {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-touch-callout: none !important;
+        }
+        
         @keyframes shake {
             0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
             10% { transform: translateX(-3px) translateY(-2px) rotate(-1deg); }
@@ -299,7 +373,6 @@ function addDynamicStyles() {
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     addDynamicStyles();
-    optimizeForMobile();
     init();
 });
 
@@ -316,114 +389,22 @@ document.addEventListener('visibilitychange', () => {
 
 // Touch event handling for mobile
 let touchStartTime = 0;
-let touchStartY = 0;
-let touchStartX = 0;
 
-magic8Ball.addEventListener('touchstart', (e) => {
-    touchStartTime = Date.now();
-    touchStartY = e.touches[0].clientY;
-    touchStartX = e.touches[0].clientX;
-    e.preventDefault();
-    e.stopPropagation();
-});
+if (magic8Ball) {
+    magic8Ball.addEventListener('touchstart', (e) => {
+        touchStartTime = Date.now();
+        e.preventDefault();
+    });
 
-magic8Ball.addEventListener('touchend', (e) => {
-    const touchDuration = Date.now() - touchStartTime;
-    const touchEndY = e.changedTouches[0].clientY;
-    const touchEndX = e.changedTouches[0].clientX;
-    const touchDistanceY = Math.abs(touchEndY - touchStartY);
-    const touchDistanceX = Math.abs(touchEndX - touchStartX);
-    const totalTouchDistance = Math.sqrt(touchDistanceX * touchDistanceX + touchDistanceY * touchDistanceY);
-    
-    // Only trigger if it's a tap (not a scroll) and within time limit
-    if (touchDuration < 500 && totalTouchDistance < 15 && !isShaking && !fortuneRevealed) {
-        handleMagic8BallClick();
-    }
-    e.preventDefault();
-    e.stopPropagation();
-});
-
-// Prevent zoom on double tap for mobile
-let lastTouchEnd = 0;
-document.addEventListener('touchend', function (event) {
-    const now = (new Date()).getTime();
-    if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-    }
-    lastTouchEnd = now;
-}, false);
-
-// Add mobile-specific optimizations
-function optimizeForMobile() {
-    // Force hardware acceleration
-    document.body.style.transform = 'translateZ(0)';
-    document.body.style.webkitTransform = 'translateZ(0)';
-    
-    // Improve scrolling performance
-    document.body.style.webkitOverflowScrolling = 'touch';
-    
-    // Add touch event listeners for better mobile interaction
-    document.addEventListener('touchmove', function(e) {
-        // Allow scrolling but prevent other touch behaviors
-        if (e.target.closest('.magic-8-ball') || e.target.closest('.gift-button')) {
-            e.preventDefault();
+    magic8Ball.addEventListener('touchend', (e) => {
+        const touchDuration = Date.now() - touchStartTime;
+        if (touchDuration < 500 && !isShaking && !fortuneRevealed) {
+            handleMagic8BallClick();
         }
-    }, { passive: false });
-    
-    // Improve button touch handling
-    const giftBtn = document.getElementById('giftButton');
-    if (giftBtn) {
-        giftBtn.addEventListener('touchstart', function(e) {
-            this.style.transform = 'translateY(-2px) scale(1.05)';
-        });
-        
-        giftBtn.addEventListener('touchend', function(e) {
-            this.style.transform = '';
-        });
-    }
+        e.preventDefault();
+    });
 }
 
-// Detect mobile device
-function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
-// Enhanced mobile modal handling
-function openModal() {
-    modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    // On mobile, prevent background scrolling
-    if (isMobileDevice()) {
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-        document.body.style.top = `-${window.scrollY}px`;
-    }
-    
-    // Focus management for accessibility
-    setTimeout(() => {
-        modalClose.focus();
-    }, 300);
-}
-
-function closeModal() {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
-    
-    // Restore mobile scrolling
-    if (isMobileDevice()) {
-        const scrollY = document.body.style.top;
-        document.body.style.position = '';
-        document.body.style.width = '';
-        document.body.style.top = '';
-        if (scrollY) {
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
-        }
-    }
-    
-    // Return focus to gift button
-    giftButton.focus();
-}
 // Preload assets and optimize performance
 function preloadAssets() {
     // Preload any fonts or images if needed
