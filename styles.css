@@ -101,6 +101,7 @@ body {
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     display: block;
     margin-bottom: 0.5rem;
+    line-height: 1.1;
 }
 
 .birthday-text-second {
@@ -132,6 +133,7 @@ body {
     font-weight: 300;
     color: rgba(255, 255, 255, 0.8);
     animation: fadeIn 1s ease-out 0.5s both;
+    line-height: 1.4;
 }
 
 /* Magic 8-Ball Section */
@@ -663,59 +665,68 @@ body {
     }
 }
 
-/* Responsive Design */
+/* Responsive Design - ЗНАЧИТЕЛЬНО УЛУЧШЕННЫЙ РАЗМЕР ТЕКСТА */
 @media (max-width: 768px) {
     .container {
-        padding: 1rem 0.5rem;
+        padding: 1rem;
         min-height: 100vh;
-        min-height: 100dvh; /* Dynamic viewport height for mobile */
+        min-height: 100dvh;
     }
 
     .birthday-text {
-        font-size: clamp(1.5rem, 5vw, 2.2rem);
+        font-size: clamp(2.5rem, 8vw, 4rem); /* Значительно увеличен! */
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+
+    .birthday-text-second {
+        font-size: clamp(1.8rem, 5vw, 2.5rem); /* Значительно увеличен! */
     }
 
     .birthday-subtitle {
-        font-size: 0.9rem;
+        font-size: 1.1rem; /* Увеличен с 0.9rem */
         padding: 0 1rem;
+        line-height: 1.5;
+        margin-bottom: 0.5rem;
     }
 
     .magic-8-ball {
-        width: 160px;
-        height: 160px;
+        width: 180px; /* Увеличен с 160px */
+        height: 180px;
         margin-bottom: 2rem;
         touch-action: manipulation;
     }
 
     .ball-window {
-        width: 65px;
-        height: 65px;
+        width: 75px; /* Увеличен с 65px */
+        height: 75px;
     }
 
     .ball-text {
-        font-size: 0.7rem;
-        padding: 0.3rem;
-        line-height: 1.1;
+        font-size: 0.9rem; /* Увеличен с 0.7rem */
+        padding: 0.4rem;
+        line-height: 1.2;
     }
 
     .magic-instruction {
-        font-size: 0.9rem;
+        font-size: 1rem; /* Увеличен с 0.9rem */
         padding: 0 1rem;
         text-align: center;
+        line-height: 1.4;
     }
 
     .gift-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
+        padding: 1rem 2rem; /* Увеличен */
+        font-size: 1.1rem; /* Увеличен */
         margin-top: 1rem;
-        min-height: 50px;
+        min-height: 55px; /* Увеличен */
         touch-action: manipulation;
         width: auto;
         max-width: 90vw;
     }
 
     .gift-icon {
-        font-size: 1.2rem;
+        font-size: 1.4rem; /* Увеличен */
     }
 
     .modal-content {
@@ -728,98 +739,110 @@ body {
     }
     
     .mystery-box {
-        padding: 1rem;
-        min-height: 150px;
+        padding: 1.5rem; /* Увеличен */
+        min-height: 180px; /* Увеличен */
+    }
+
+    .mystery-text {
+        font-size: 1.4rem; /* Увеличен */
+        margin-bottom: 1.5rem;
     }
 
     .modal-title {
-        font-size: 1.8rem;
+        font-size: 2rem; /* Увеличен */
     }
 
     .destination-name {
-        font-size: 2rem;
+        font-size: 2.2rem; /* Увеличен */
     }
 
     .travel-details {
-        gap: 0.8rem;
+        gap: 1rem;
     }
 
     .detail-item {
-        padding: 0.8rem;
-        font-size: 0.9rem;
+        padding: 1rem; /* Увеличен */
+        font-size: 1rem; /* Увеличен */
     }
 
-    .modal {
-        margin: 0.5rem;
-        max-height: 85vh;
-        max-height: 85dvh;
+    .detail-icon {
+        font-size: 1.6rem; /* Увеличен */
+        min-width: 35px;
     }
 
     .birthday-section {
-        margin-bottom: 2rem;
+        margin-bottom: 3rem; /* Увеличен */
     }
 
     .magic-section {
-        margin-bottom: 2rem;
+        margin-bottom: 3rem; /* Увеличен */
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 1rem 0.5rem;
+        padding: 1rem;
         min-height: 100vh;
         min-height: 100dvh;
     }
 
     .birthday-text {
-        font-size: clamp(1.1rem, 4.5vw, 1.5rem);
-        margin-bottom: 0.2rem;
+        font-size: clamp(2rem, 7vw, 3rem); /* ОЧЕНЬ значительно увеличен! Было 1.1-1.5rem */
+        margin-bottom: 0.8rem;
+        line-height: 1.1;
     }
 
     .birthday-text-second {
-        font-size: clamp(0.9rem, 4vw, 1.2rem);
+        font-size: clamp(1.4rem, 4.5vw, 2rem); /* ОЧЕНЬ значительно увеличен! Было 0.9-1.2rem */
     }
 
     .birthday-subtitle {
-        font-size: 0.8rem;
-        padding: 0 0.5rem;
+        font-size: 1rem; /* Увеличен с 0.8rem */
+        padding: 0 1rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
     }
 
     .magic-8-ball {
-        width: 140px;
-        height: 140px;
-        margin-bottom: 1.5rem;
+        width: 160px; /* Увеличен с 140px */
+        height: 160px;
+        margin-bottom: 2rem;
     }
 
     .ball-window {
-        width: 55px;
-        height: 55px;
+        width: 65px; /* Увеличен с 55px */
+        height: 65px;
     }
 
     .ball-text {
-        font-size: 0.6rem;
-        padding: 0.2rem;
+        font-size: 0.8rem; /* Увеличен с 0.6rem */
+        padding: 0.3rem;
     }
 
     .magic-instruction {
-        font-size: 0.8rem;
-        padding: 0 0.5rem;
+        font-size: 0.95rem; /* Увеличен с 0.8rem */
+        padding: 0 1rem;
+        line-height: 1.4;
     }
 
     .gift-button {
-        padding: 0.7rem 1.2rem;
-        font-size: 1rem;
-        min-height: 48px;
+        padding: 0.9rem 1.8rem; /* Увеличен */
+        font-size: 1.05rem; /* Увеличен */
+        min-height: 52px; /* Увеличен */
         width: 85vw;
-        max-width: 280px;
+        max-width: 300px;
+    }
+
+    .gift-icon {
+        font-size: 1.3rem; /* Увеличен */
     }
 
     .modal-content {
-        padding: 1rem;
+        padding: 1.2rem; /* Увеличен */
     }
 
     .destination-card {
-        padding: 1.5rem;
+        padding: 1.8rem; /* Увеличен */
     }
 
     .modal {
@@ -828,47 +851,47 @@ body {
     }
     
     .mystery-box {
-        padding: 1rem;
-        min-height: 120px;
-    }
-
-    .modal-title {
-        font-size: 1.5rem;
-    }
-
-    .destination-name {
-        font-size: 1.8rem;
-    }
-
-    .detail-item {
-        padding: 0.7rem;
-        font-size: 0.85rem;
-    }
-
-    .detail-icon {
-        font-size: 1.3rem;
-        min-width: 25px;
-    }
-
-    .birthday-section {
-        margin-bottom: 1.5rem;
-    }
-
-    .magic-section {
-        margin-bottom: 1.5rem;
-    }
-
-    .travel-icon {
-        font-size: 2.5rem;
+        padding: 1.2rem; /* Увеличен */
+        min-height: 150px; /* Увеличен */
     }
 
     .mystery-text {
-        font-size: 1.2rem;
+        font-size: 1.3rem; /* Увеличен с 1.2rem */
+    }
+
+    .modal-title {
+        font-size: 1.8rem; /* Увеличен с 1.5rem */
+    }
+
+    .destination-name {
+        font-size: 2rem; /* Увеличен с 1.8rem */
+    }
+
+    .detail-item {
+        padding: 0.9rem; /* Увеличен */
+        font-size: 0.95rem; /* Увеличен */
+    }
+
+    .detail-icon {
+        font-size: 1.5rem; /* Увеличен */
+        min-width: 30px;
+    }
+
+    .birthday-section {
+        margin-bottom: 2rem; /* Увеличен */
+    }
+
+    .magic-section {
+        margin-bottom: 2rem; /* Увеличен */
+    }
+
+    .travel-icon {
+        font-size: 2.8rem; /* Увеличен */
     }
 
     .reveal-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
+        padding: 1rem 2rem; /* Увеличен */
+        font-size: 1.1rem; /* Увеличен */
     }
 }
 
